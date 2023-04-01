@@ -1,19 +1,18 @@
 <!DOCTYPE html>
 <html>
-
 <head>
-  <meta charset="UTF-8">
-  <title>Page With Youtube Video Background</title>
+	<title>YouTube Video Background</title>
+	<style>
+		iframe {
+			position: fixed;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+			z-index: -1;
+		}
+	</style>
 </head>
-
 <body>
-  <div id="bg_container">
-    <video src="https://cdn.mtdv.me/video/rick.mp4" autoplay></video>
-  </div>
-  <div id="content">
-    <h1>Web page with HD looping video background</h1>
-    <h2>Using CSS the video is simply placed underneath our HTML content</h2>
-  </div>
+	<iframe src="https://www.youtube.com/embed/VIDEO_ID?autoplay=1" frameborder="0" allowfullscreen></iframe>
 </body>
-
-</html>
