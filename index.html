@@ -1,36 +1,125 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-	<meta http-equiv="Permissions-Policy" content="interest-cohort=()">
-	<title>YouTube Video Background</title>
-	<style>
-		#video-container {
-			position: fixed;
-			top: 0;
-			left: 0;
-			width: 100%;
-			height: 100%;
-			z-index: -1;
-			overflow: hidden;
-		}
-		#video {
-			position: absolute;
-			top: 50%;
-			left: 50%;
-			transform: translate(-50%, -50%);
-			min-width: 100%;
-			min-height: 100%;
-			width: auto;
-			height: auto;
-		}
-	</style>
+    <meta http-equiv="Permissions-Policy" content="interest-cohort=()">
+    <title>YouTube Video Background</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Fuzzy+Bubbles:wght@400;700&display=swap');
+
+        body {
+            background: #FFE000;
+            /* fallback for old browsers */
+            background: -webkit-linear-gradient(to bottom, #799F0C, #FFE000);
+            /* Chrome 10-25, Safari 5.1-6 */
+            background: linear-gradient(to bottom, #799F0C, #FFE000);
+            /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+        }
+
+        #video-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            overflow: hidden;
+        }
+
+        #video {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            min-width: 100%;
+            min-height: 100%;
+            width: auto;
+            height: auto;
+            opacity: 0;
+        }
+
+        #play-button {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        #play-button button {
+            font-size: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px;
+            border-radius: 20px;
+            border-width: 0px;
+            background: #c6ed8e;
+            color: green;
+        }
+
+        #play-button button:hover {
+            filter: brightness(1.1);
+        }
+
+        #textbox {
+            font-family: 'Fuzzy Bubbles';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: rgb(255 141 141 / 80%);
+            padding: 15px;
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+            animation: fadeIn 1s;
+        }
+
+        img {
+            width: 100px;
+        }
+
+        @keyframes fadeIn {
+            from{
+                top:45%;
+                opacity: 0;
+            }
+            to{
+                top: 50%;
+                opacity: 1;
+            }
+        }
+    </style>
 </head>
+
 <body>
-	<div id="video-container">
-		<video id="video" src="https://cdn.mtdv.me/video/rick.mp4" autoplay></video>
-	</div>
-	<script>
-		var video = document.getElementById("video");
-		video.play();
-	</script>
+    <div id="video-container">
+        <video id="video" src="https://cdn.mtdv.me/video/rick.mp4"></video>
+        <div id="play-button">
+            <button onclick="playVideo()">
+                <img
+                    src="https://cdn.discordapp.com/attachments/789488241870372914/1043079257200525332/mogu_2.png"></img>
+                Press me
+            </button>
+        </div>
+    </div>
+
+    <script>
+        function playVideo() {
+            var video = document.getElementById("video");
+            video.style.opacity = 1;
+            video.volume = 0.3;
+            video.play();
+            document.getElementById("play-button").style.display = "none";
+
+            var textbox = document.createElement("div");
+            textbox.id = "textbox";
+            textbox.innerHTML = "<h1>Happy April Fools Mio! :P</h1><p>Yes i literally spent 30 min to make this</p><p>but hey, at least it made you smile a little, right?</p><p>Right? (I hope) </p><p>Anyways ganba on your work!!!</p>";
+            document.getElementById("video-container").appendChild(textbox);
+        }
+    </script>
 </body>
+
+</html>
